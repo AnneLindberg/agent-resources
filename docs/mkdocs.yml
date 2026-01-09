@@ -20,5 +20,17 @@ markdown_extensions:
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
   - admonition
   - pymdownx.details
+  - tables
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Resource Types: what-is-agent-resources.md
+    - Install Agent Resources: install-agent-resources.md
+    - Create Your Own Repo: create-your-own-repo.md
+  - How Packaging Works: how-packaging-works.md
+  - Supported Platforms: supported-platforms.md
