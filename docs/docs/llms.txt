@@ -1,0 +1,63 @@
+# Agent Resources
+
+> A package manager for AI coding tools. The npm/pip equivalent for AI agents.
+
+## What This Is
+
+Agent Resources (agr) is a CLI tool that lets developers share and install skills, commands, and sub-agents across multiple AI coding platforms with a single command. It works with Claude Code, Cursor, Codex, GitHub Copilot, and OpenCode.
+
+## Quick Start
+
+```bash
+pip install agr
+agr install username/skill-name
+```
+
+## Key Pages
+
+- [Home](https://kasperjunge.github.io/agent-resources/site/) - Overview and quick start guide
+- [Resource Types](https://kasperjunge.github.io/agent-resources/site/what-is-agent-resources/) - Skills, commands, subagents, and packages explained
+- [Installation Guide](https://kasperjunge.github.io/agent-resources/site/install-agent-resources/) - How to install the CLI
+- [Create Your Own Repo](https://kasperjunge.github.io/agent-resources/site/create-your-own-repo/) - Share your own resources
+- [How Packaging Works](https://kasperjunge.github.io/agent-resources/site/how-packaging-works/) - Technical details on resource structure
+- [SDK Documentation](https://kasperjunge.github.io/agent-resources/site/agent-resources-sdk/) - Python SDK for programmatic access
+- [Supported Platforms](https://kasperjunge.github.io/agent-resources/site/supported-platforms/) - Claude Code, Cursor, Codex, Copilot, OpenCode
+
+## Resource Types
+
+| Type | Description |
+|------|-------------|
+| Skills | Capabilities your agent uses automatically (like expertise in specific domains) |
+| Commands | Slash commands like `/review` or `/deploy` |
+| Subagents | Specialized agents to delegate tasks to |
+| Packages | Bundles of skills, commands, and agents |
+
+## Common Commands
+
+```bash
+# Install from GitHub
+agr install username/packagename
+
+# Install to a specific tool
+agr install username/packagename --tool=cursor
+
+# Install globally (all projects)
+agr install username/packagename --global
+
+# Scaffold a new repo
+agr init repo agent-resources
+```
+
+## Source Code
+
+- GitHub: https://github.com/kasperjunge/agent-resources
+- PyPI: https://pypi.org/project/agr/
+
+## Contact
+
+- GitHub Issues: https://github.com/kasperjunge/agent-resources/issues
+- Author: Kasper Junge (@kasperjunge)
+
+## License
+
+MIT License

@@ -1,6 +1,7 @@
-site_name: agent-resources
+site_name: Agent Resources
 site_url: https://kasperjunge.github.io/agent-resources/site/
-site_description: Share and install Claude Code skills, commands, and sub-agents
+site_description: A package manager for AI coding tools. Share and install skills, commands, and sub-agents for Claude Code, Cursor, Copilot, and more.
+site_author: Kasper Junge
 repo_url: https://github.com/kasperjunge/agent-resources
 repo_name: kasperjunge/agent-resources
 
@@ -15,6 +16,17 @@ theme:
     - navigation.instant
     - navigation.tracking
     - content.code.copy
+  custom_dir: overrides
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/kasperjunge/agent-resources
+      name: Agent Resources on GitHub
+  generator: false
+
+plugins:
+  - search
 
 markdown_extensions:
   - pymdownx.highlight:
@@ -25,6 +37,8 @@ markdown_extensions:
   - admonition
   - pymdownx.details
   - tables
+  - attr_list
+  - meta
 
 nav:
   - Home: index.md

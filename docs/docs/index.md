@@ -1,3 +1,8 @@
+---
+title: Agent Resources - Package Manager for AI Coding Tools
+description: Install and share skills, commands, and sub-agents for Claude Code, Cursor, Copilot, Codex, and OpenCode. The npm/pip for AI agents.
+---
+
 # Agent Resources
 
 A package manager for AI coding tools.
