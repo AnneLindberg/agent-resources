@@ -6,7 +6,7 @@ Agent Resources can install packages to multiple AI coding tools. It automatical
 
 ## Automatic Tool Detection
 
-When you run `agr install`, the tool automatically detects your environment by checking:
+When you run `agr add`, the tool automatically detects your environment by checking:
 
 1. **Existing directories** — looks for `.claude/`, `.cursor/`, `.codex/`, `.github/`, `.opencode/`
 2. **Config files** — checks for `CLAUDE.md`, `AGENTS.md`, `.cursorrules`
@@ -21,7 +21,7 @@ If multiple tools are detected, resources install to all of them. If none are de
 By default, packages install to all detected tools:
 
 ```bash
-agr install anthropics/code-reviewer
+agr add anthropics/code-reviewer
 ```
 
 ```
@@ -41,23 +41,23 @@ Done
 Install to a single tool only:
 
 ```bash
-agr install anthropics/code-reviewer --tool=claude
-agr install anthropics/code-reviewer --tool=cursor
-agr install anthropics/code-reviewer --tool=codex
-agr install anthropics/code-reviewer --tool=copilot
-agr install anthropics/code-reviewer --tool=opencode
+agr add anthropics/code-reviewer --tool=claude
+agr add anthropics/code-reviewer --tool=cursor
+agr add anthropics/code-reviewer --tool=codex
+agr add anthropics/code-reviewer --tool=copilot
+agr add anthropics/code-reviewer --tool=opencode
 ```
 
 Install to multiple tools:
 
 ```bash
-agr install anthropics/code-reviewer --tool=claude,cursor
+agr add anthropics/code-reviewer --tool=claude,cursor
 ```
 
 Install to all detected tools:
 
 ```bash
-agr install anthropics/code-reviewer --tool=all
+agr add anthropics/code-reviewer --tool=all
 ```
 
 ---

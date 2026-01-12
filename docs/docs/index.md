@@ -11,7 +11,7 @@ A package manager for AI coding tools.
 
 ```bash
 pip install agr
-agr install username/code-reviewer
+agr add username/code-reviewer
 ```
 
 Works with Claude Code, Cursor, Codex, GitHub Copilot, and OpenCode.
@@ -30,10 +30,10 @@ pip install agr
 
 ```bash
 # Install from someone's agent-resources repo
-agr install username/code-reviewer
+agr add username/code-reviewer
 
 # Or from any GitHub repo
-agr install username/repo-name/code-reviewer
+agr add username/repo-name/code-reviewer
 ```
 
 The CLI auto-detects your tools and installs to the right locations.
@@ -76,7 +76,7 @@ gh repo create agent-resources --public --push
 **Now anyone can install your resources:**
 
 ```bash
-agr install yourusername/my-skill
+agr add yourusername/my-skill
 ```
 
 **Why name it `agent-resources`?** If your repo is named `agent-resources`, users can install with just `username/resource-name`. Otherwise they need the full path `username/repo-name/resource-name`.
@@ -89,8 +89,8 @@ See [Create Your Own Repo](create-your-own-repo.md) for details.
 
 | Source | Example |
 |--------|---------|
-| **GitHub** (default) | `agr install username/skill-name` |
-| **Central registry** | `agr install skill-name` |
+| **GitHub** (default) | `agr add username/skill-name` |
+| **Central registry** | `agr add skill-name` |
 
 Most resources live on GitHub. The central registry indexes popular resources for easier discovery.
 
@@ -100,18 +100,18 @@ Most resources live on GitHub. The central registry indexes popular resources fo
 
 ```bash
 # Install from GitHub
-agr install username/packagename
+agr add username/packagename
 
 # Install to a specific tool
-agr install username/packagename --tool=cursor
+agr add username/packagename --tool=cursor
 
 # Install globally (all projects)
-agr install username/packagename --global
+agr add username/packagename --global
 
 # Install a specific resource type
-agr install skill username/my-skill
-agr install command username/my-command
-agr install agent username/my-agent
+agr add skill username/my-skill
+agr add command username/my-command
+agr add agent username/my-agent
 ```
 
 ---

@@ -109,7 +109,7 @@ By default, `agr` looks for resources in a repo named `agent-resources`:
 
 ```bash
 # Installs from github.com/username/agent-resources
-agr install skill username/my-skill
+agr add skill username/my-skill
 ```
 
 If you name your repo `agent-resources`, users only need to specify your username and resource name. This is the recommended convention for sharing resources.
@@ -118,5 +118,5 @@ To install from a differently named repo, use the three-part format:
 
 ```bash
 # Installs from github.com/username/custom-repo
-agr install skill username/custom-repo/my-skill
+agr add skill username/custom-repo/my-skill
 ```

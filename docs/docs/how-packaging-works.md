@@ -142,7 +142,7 @@ Run `/review` on any file or directory.
 
 ### Installed (User's Project)
 
-After `agr install anthropics/code-reviewer`:
+After `agr add anthropics/code-reviewer`:
 
 === "Claude Code"
 
@@ -271,7 +271,7 @@ No lock file needed. The installed `PACKAGE.md` files contain exact resolved ver
 Agent Resources translates packages to work across tools:
 
 ```bash
-$ agr install anthropics/code-reviewer
+$ agr add anthropics/code-reviewer
 
 Detected tools: Claude Code, Cursor
 
@@ -290,14 +290,14 @@ Share packages with your team by committing the packages directory:
 
 ```bash
 # Developer A adds a package
-agr install anthropics/code-reviewer
+agr add anthropics/code-reviewer
 git add .claude/packages/   # or .cursor/packages/, .codex/packages/, etc.
 git commit -m "Add code-reviewer package"
 git push
 
 # Developer B gets the same packages
 git pull
-agr install
+agr add
 ```
 
-Running `agr install` without arguments reads the packages directory and ensures all resources are installed.
+Running `agr add` without arguments reads the packages directory and ensures all resources are installed.

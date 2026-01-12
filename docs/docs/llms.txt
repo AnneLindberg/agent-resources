@@ -10,7 +10,7 @@ Agent Resources (agr) is a CLI tool that lets developers share and install skill
 
 ```bash
 pip install agr
-agr install username/skill-name
+agr add username/skill-name
 ```
 
 ## Key Pages
@@ -36,13 +36,13 @@ agr install username/skill-name
 
 ```bash
 # Install from GitHub
-agr install username/packagename
+agr add username/packagename
 
 # Install to a specific tool
-agr install username/packagename --tool=cursor
+agr add username/packagename --tool=cursor
 
 # Install globally (all projects)
-agr install username/packagename --global
+agr add username/packagename --global
 
 # Scaffold a new repo
 agr init repo agent-resources
