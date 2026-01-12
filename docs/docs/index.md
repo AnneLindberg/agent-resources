@@ -5,19 +5,14 @@ description: Install and share skills, commands, and sub-agents for Claude Code,
 
 # Get Started
 
-!!! warning "Coming Soon"
-    This functionality is not yet implemented. See the [repository README](https://github.com/kasperjunge/agent-resources) for currently supported features.
+A package manager for Claude Code skills, commands, and agents.
 
-A package manager for AI coding tools.
-
-**Agent resources** are the files that make AI coding assistants smarter—skills, commands, subagents, and packages. This CLI lets you install them from GitHub or a central registry, and share your own.
+**Agent resources** are the files that make AI coding assistants smarter—skills, commands, and subagents. This CLI lets you install them from GitHub and share your own.
 
 ```bash
 pip install agr
-agr add username/code-reviewer
+agr add skill username/code-reviewer
 ```
-
-Works with Claude Code, Cursor, Codex, GitHub Copilot, and OpenCode.
 
 ---
 
@@ -33,13 +28,11 @@ pip install agr
 
 ```bash
 # Install from someone's agent-resources repo
-agr add username/code-reviewer
+agr add skill username/code-reviewer
 
 # Or from any GitHub repo
-agr add username/repo-name/code-reviewer
+agr add skill username/repo-name/code-reviewer
 ```
-
-The CLI auto-detects your tools and installs to the right locations.
 
 **3. Use it**
 
@@ -56,7 +49,6 @@ Agent resources are files that extend what your AI coding assistant can do.
 | **Skills** | Add capabilities your agent uses automatically |
 | **Commands** | Add slash commands like `/review` or `/deploy` |
 | **Subagents** | Add specialized agents to delegate tasks to |
-| **Packages** | Bundles of skills, commands, and agents |
 
 ---
 
@@ -90,31 +82,39 @@ See [Create Your Own Repo](create-your-own-repo.md) for details.
 
 ## Where Resources Come From
 
-| Source | Example |
-|--------|---------|
-| **GitHub** (default) | `agr add username/skill-name` |
-| **Central registry** | `agr add skill-name` |
+Resources are hosted on GitHub. If your repo is named `agent-resources`, users install with:
 
-Most resources live on GitHub. The central registry indexes popular resources for easier discovery.
+```bash
+agr add skill username/skill-name
+```
+
+From any other repo, use the three-part format:
+
+```bash
+agr add skill username/repo-name/skill-name
+```
 
 ---
 
 ## Common Commands
 
 ```bash
-# Install from GitHub
-agr add username/packagename
-
-# Install to a specific tool
-agr add username/packagename --tool=cursor
-
-# Install globally (all projects)
-agr add username/packagename --global
-
-# Install a specific resource type
+# Install resources
 agr add skill username/my-skill
 agr add command username/my-command
 agr add agent username/my-agent
+
+# Install globally (all projects)
+agr add skill username/my-skill --global
+
+# Overwrite existing
+agr add skill username/my-skill --overwrite
+
+# Create new resources
+agr init repo my-agent-resources
+agr init skill my-skill
+agr init command my-command
+agr init agent my-agent
 ```
 
 ---

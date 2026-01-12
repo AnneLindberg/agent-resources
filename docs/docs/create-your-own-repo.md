@@ -1,8 +1,5 @@
 # Create Your Own Repo
 
-!!! warning "Coming Soon"
-    This functionality is not yet implemented. See the [repository README](https://github.com/kasperjunge/agent-resources) for currently supported features.
-
 You can host skills, commands, and subagents in any public GitHub repository. This guide shows you how to set up a repo and install resources from it.
 
 ---
@@ -11,69 +8,17 @@ You can host skills, commands, and subagents in any public GitHub repository. Th
 
 Your repo must follow this structure:
 
-=== "Claude Code"
-
-    ```
-    your-repo/
-    └── .claude/
-        ├── skills/
-        │   └── my-skill/
-        │       └── SKILL.md
-        ├── commands/
-        │   └── my-command.md
-        └── agents/
-            └── my-agent.md
-    ```
-
-=== "Cursor"
-
-    ```
-    your-repo/
-    └── .cursor/
-        ├── skills/
-        │   └── my-skill/
-        │       └── SKILL.md
-        └── commands/
-            └── my-command.md
-    ```
-
-=== "Codex"
-
-    ```
-    your-repo/
-    └── .codex/
-        ├── skills/
-        │   └── my-skill/
-        │       └── SKILL.md
-        └── prompts/
-            └── my-command.md
-    ```
-
-=== "GitHub Copilot"
-
-    ```
-    your-repo/
-    └── .github/
-        ├── skills/
-        │   └── my-skill/
-        │       └── SKILL.md
-        └── prompts/
-            └── my-command.prompt.md
-    ```
-
-=== "OpenCode"
-
-    ```
-    your-repo/
-    └── .opencode/
-        ├── skill/
-        │   └── my-skill/
-        │       └── SKILL.md
-        ├── command/
-        │   └── my-command.md
-        └── agent/
-            └── my-agent.md
-    ```
+```
+your-repo/
+└── .claude/
+    ├── skills/
+    │   └── my-skill/
+    │       └── SKILL.md
+    ├── commands/
+    │   └── my-command.md
+    └── agents/
+        └── my-agent.md
+```
 
 **Key requirements:**
 
@@ -99,7 +44,6 @@ To create individual resources:
 agr init skill my-skill
 agr init command my-command
 agr init agent my-agent
-agr init my-package
 ```
 
 Push to GitHub and you're ready to share.
