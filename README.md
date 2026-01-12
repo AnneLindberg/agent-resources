@@ -4,7 +4,7 @@
 
 **Share and install Claude Code skills, commands, and agents with a single command.**
 
-*Like pip, but for Claude Code resources.*
+*Like uv, but for Claude Code resources.*
 
 [![PyPI](https://img.shields.io/pypi/v/agr?color=blue)](https://pypi.org/project/agr/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
