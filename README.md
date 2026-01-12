@@ -39,7 +39,7 @@ agr add skill kasperjunge/hello-world
 ```bash
 agr add skill <username>/<skill-name>       # Skills
 agr add command <username>/<command-name>   # Slash commands
-agr add agent <username>/<agent-name>       # Sub-agents
+agr add agent <username>/<agent-name>       # subagents
 ```
 
 ### Default Repository Convention

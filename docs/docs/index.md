@@ -1,125 +1,75 @@
 ---
-title: Get Started - Agent Resources
-description: Install and share skills, commands, and sub-agents for Claude Code.
+title: Introduction
 ---
 
-# Get Started
+# Introduction
 
-A package manager for Claude Code skills, commands, and agents.
+Agent Resources (agr) is a CLI for installing and creating Claude Code resources from GitHub.
+It lets you pull skills, slash commands, and subagents into your local `.claude/` folder with a
+single command.
 
-**Agent resources** are the files that make AI coding assistants smarter—skills, commands, and subagents. This CLI lets you install them from GitHub and share your own.
+## Highlights
+
+- Install a skill, command, or sub-agent from GitHub in seconds
+- Share skills, slash commands, and subagents with a simple handle like `username/skillname`
+- Create a personal library of skills, subagents, and slash commands you can install anywhere with one command
+- Skip the configuration overhead of Anthropics plugin marketplaces
+
+## Quick start
+
+No install required:
+
+```bash
+uvx agr add skill kasperjunge/hello-world
+```
+
+Install permanently:
 
 ```bash
 pip install agr
-agr add skill username/code-reviewer
+agr add skill kasperjunge/hello-world
 ```
 
----
+## What agr installs
 
-## Get Started
+agr installs files into one of these locations:
 
-**1. Install the CLI**
-
-```bash
-pip install agr
+```
+./
+└── .claude/
+    ├── skills/
+    ├── commands/
+    └── agents/
 ```
 
-**2. Install a resource from GitHub**
+Or globally:
 
-```bash
-# Install from someone's agent-resources repo
-agr add skill username/code-reviewer
-
-# Or from any GitHub repo
-agr add skill username/repo-name/code-reviewer
+```
+~/
+└── .claude/
+    ├── skills/
+    ├── commands/
+    └── agents/
 ```
 
-**3. Use it**
+## How it works
 
-Your agent now has the new skill, command, or subagent available.
+Resources are fetched from GitHub repositories that follow a simple layout:
 
----
-
-## What Are Agent Resources?
-
-Agent resources are files that extend what your AI coding assistant can do.
-
-| Type | What it does |
-|------|--------------|
-| **Skills** | Add capabilities your agent uses automatically |
-| **Commands** | Add slash commands like `/review` or `/deploy` |
-| **Subagents** | Add specialized agents to delegate tasks to |
-
----
-
-## Share Your Own
-
-Create a GitHub repo to share your agent resources with others.
-
-**Quick setup:**
-
-```bash
-# Scaffold a new repo with examples
-agr init repo agent-resources
-
-# Push to GitHub
-cd agent-resources
-git init && git add . && git commit -m "init"
-gh repo create agent-resources --public --push
+```
+agent-resources/
+└── .claude/
+    ├── skills/
+    ├── commands/
+    └── agents/
 ```
 
-**Now anyone can install your resources:**
+By default, `agr add` looks in a repository named `agent-resources` on the user's GitHub account.
+If a repo has a different name, include it in the reference.
 
-```bash
-agr add yourusername/my-skill
-```
+## Next steps
 
-**Why name it `agent-resources`?** If your repo is named `agent-resources`, users can install with just `username/resource-name`. Otherwise they need the full path `username/repo-name/resource-name`.
-
-See [Create Your Own Repo](create-your-own-repo.md) for details.
-
----
-
-## Where Resources Come From
-
-Resources are hosted on GitHub. If your repo is named `agent-resources`, users install with:
-
-```bash
-agr add skill username/skill-name
-```
-
-From any other repo, use the three-part format:
-
-```bash
-agr add skill username/repo-name/skill-name
-```
-
----
-
-## Common Commands
-
-```bash
-# Install resources
-agr add skill username/my-skill
-agr add command username/my-command
-agr add agent username/my-agent
-
-# Install globally (all projects)
-agr add skill username/my-skill --global
-
-# Overwrite existing
-agr add skill username/my-skill --overwrite
-
-# Create new resources
-agr init repo my-agent-resources
-agr init skill my-skill
-agr init command my-command
-agr init agent my-agent
-```
-
----
-
-## Next Steps
-
-- [Resource Types](what-is-agent-resources.md) — Learn about skills, commands, subagents, and packages
-- [Create Your Own Repo](create-your-own-repo.md) — Share your own resources
+- Start with [Installation](getting-started/installation.md)
+- Learn common workflows in [Installing resources](guides/installing-resources.md)
+- Understand the model in [Resource types](concepts/resource-types.md)
+- Browse full CLI details in [CLI reference](reference/cli.md)

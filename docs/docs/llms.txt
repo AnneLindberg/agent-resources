@@ -1,48 +1,45 @@
 # Agent Resources
 
-> A package manager for AI coding tools. The npm/pip equivalent for AI agents.
+> A package manager for Claude Code resources.
 
 ## What This Is
 
-Agent Resources (agr) is a CLI tool that lets developers share and install skills, commands, and sub-agents across multiple AI coding platforms with a single command. It works with Claude Code, Cursor, Codex, GitHub Copilot, and OpenCode.
+Agent Resources (agr) is a CLI tool that lets developers install and create Claude Code skills,
+commands, and subagents from GitHub.
 
 ## Quick Start
 
 ```bash
 pip install agr
-agr add username/skill-name
+agr add skill username/skill-name
 ```
 
 ## Key Pages
 
-- [Home](https://kasperjunge.github.io/agent-resources/site/) - Overview and quick start guide
-- [Resource Types](https://kasperjunge.github.io/agent-resources/site/what-is-agent-resources/) - Skills, commands, subagents, and packages explained
-- [Installation Guide](https://kasperjunge.github.io/agent-resources/site/install-agent-resources/) - How to install the CLI
-- [Create Your Own Repo](https://kasperjunge.github.io/agent-resources/site/create-your-own-repo/) - Share your own resources
-- [How Packaging Works](https://kasperjunge.github.io/agent-resources/site/how-packaging-works/) - Technical details on resource structure
-- [SDK Documentation](https://kasperjunge.github.io/agent-resources/site/agent-resources-sdk/) - Python SDK for programmatic access
-- [Supported Platforms](https://kasperjunge.github.io/agent-resources/site/supported-platforms/) - Claude Code, Cursor, Codex, Copilot, OpenCode
+- [Introduction](https://kasperjunge.github.io/agent-resources/site/) - Overview and quick start
+- [Getting started](https://kasperjunge.github.io/agent-resources/site/getting-started/) - Install and first steps
+- [Guides](https://kasperjunge.github.io/agent-resources/site/guides/) - Common workflows
+- [Concepts](https://kasperjunge.github.io/agent-resources/site/concepts/) - Mental models and structure
+- [Reference](https://kasperjunge.github.io/agent-resources/site/reference/) - CLI reference and troubleshooting
 
 ## Resource Types
 
 | Type | Description |
 |------|-------------|
-| Skills | Capabilities your agent uses automatically (like expertise in specific domains) |
+| Skills | Capabilities your agent uses automatically |
 | Commands | Slash commands like `/review` or `/deploy` |
-| Subagents | Specialized agents to delegate tasks to |
-| Packages | Bundles of skills, commands, and agents |
+| Agents | Specialized subagents to delegate tasks to |
 
 ## Common Commands
 
 ```bash
 # Install from GitHub
-agr add username/packagename
-
-# Install to a specific tool
-agr add username/packagename --tool=cursor
+agr add skill username/skill-name
+agr add command username/command-name
+agr add agent username/agent-name
 
 # Install globally (all projects)
-agr add username/packagename --global
+agr add skill username/skill-name --global
 
 # Scaffold a new repo
 agr init repo agent-resources
