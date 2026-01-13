@@ -112,6 +112,13 @@ def parse_resource_ref(ref: str) -> tuple[str, str, str, list[str]]:
     return username, repo, name, path_segments
 
 
+def get_base_path(global_install: bool) -> Path:
+    """Get the base .claude directory path."""
+    if global_install:
+        return Path.home() / ".claude"
+    return Path.cwd() / ".claude"
+
+
 def get_destination(resource_subdir: str, global_install: bool) -> Path:
     """
     Get the destination directory for a resource.
@@ -123,12 +130,7 @@ def get_destination(resource_subdir: str, global_install: bool) -> Path:
     Returns:
         Path to the destination directory
     """
-    if global_install:
-        base = Path.home() / ".claude"
-    else:
-        base = Path.cwd() / ".claude"
-
-    return base / resource_subdir
+    return get_base_path(global_install) / resource_subdir
 
 
 @contextmanager
@@ -303,15 +305,8 @@ def handle_remove_resource(
 # Bundle handlers
 
 
-def print_bundle_success_message(
-    bundle_name: str,
-    result: BundleInstallResult,
-    username: str,
-    repo: str,
-) -> None:
-    """Print detailed success message for bundle installation."""
-    console.print(f"[green]Installed bundle '{bundle_name}'[/green]")
-
+def print_installed_resources(result: BundleInstallResult) -> None:
+    """Print the list of installed resources from a bundle result."""
     if result.installed_skills:
         skills_str = ", ".join(result.installed_skills)
         console.print(f"  [cyan]Skills ({len(result.installed_skills)}):[/cyan] {skills_str}")
@@ -321,6 +316,17 @@ def print_bundle_success_message(
     if result.installed_agents:
         agents_str = ", ".join(result.installed_agents)
         console.print(f"  [cyan]Agents ({len(result.installed_agents)}):[/cyan] {agents_str}")
+
+
+def print_bundle_success_message(
+    bundle_name: str,
+    result: BundleInstallResult,
+    username: str,
+    repo: str,
+) -> None:
+    """Print detailed success message for bundle installation."""
+    console.print(f"[green]Installed bundle '{bundle_name}'[/green]")
+    print_installed_resources(result)
 
     if result.total_skipped > 0:
         console.print(
@@ -382,10 +388,7 @@ def handle_add_bundle(
         typer.echo(f"Error: {e}", err=True)
         raise typer.Exit(1)
 
-    if global_install:
-        dest_base = Path.home() / ".claude"
-    else:
-        dest_base = Path.cwd() / ".claude"
+    dest_base = get_base_path(global_install)
 
     try:
         with fetch_spinner():
@@ -419,26 +422,14 @@ def handle_update_bundle(
         typer.echo(f"Error: {e}", err=True)
         raise typer.Exit(1)
 
-    if global_install:
-        dest_base = Path.home() / ".claude"
-    else:
-        dest_base = Path.cwd() / ".claude"
+    dest_base = get_base_path(global_install)
 
     try:
         with fetch_spinner():
             result = fetch_bundle(username, repo_name, bundle_name, dest_base, overwrite=True)
 
         console.print(f"[green]Updated bundle '{bundle_name}'[/green]")
-
-        if result.installed_skills:
-            skills_str = ", ".join(result.installed_skills)
-            console.print(f"  [cyan]Skills ({len(result.installed_skills)}):[/cyan] {skills_str}")
-        if result.installed_commands:
-            commands_str = ", ".join(result.installed_commands)
-            console.print(f"  [cyan]Commands ({len(result.installed_commands)}):[/cyan] {commands_str}")
-        if result.installed_agents:
-            agents_str = ", ".join(result.installed_agents)
-            console.print(f"  [cyan]Agents ({len(result.installed_agents)}):[/cyan] {agents_str}")
+        print_installed_resources(result)
 
     except (RepoNotFoundError, BundleNotFoundError, AgrError) as e:
         typer.echo(f"Error: {e}", err=True)
@@ -456,10 +447,7 @@ def handle_remove_bundle(
         bundle_name: Name of the bundle to remove
         global_install: If True, remove from ~/.claude/, else from ./.claude/
     """
-    if global_install:
-        dest_base = Path.home() / ".claude"
-    else:
-        dest_base = Path.cwd() / ".claude"
+    dest_base = get_base_path(global_install)
 
     try:
         result = remove_bundle(bundle_name, dest_base)

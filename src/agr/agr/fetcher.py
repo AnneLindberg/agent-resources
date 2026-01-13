@@ -287,6 +287,58 @@ def discover_bundle_contents(repo_dir: Path, bundle_name: str) -> BundleContents
     return contents
 
 
+def _install_bundle_directory(
+    names: list[str],
+    src_base: Path,
+    dest_base: Path,
+    bundle_name: str,
+    overwrite: bool,
+) -> tuple[list[str], list[str]]:
+    """Install directory-based resources (skills) from a bundle."""
+    installed = []
+    skipped = []
+    for name in names:
+        dest_path = dest_base / bundle_name / name
+        src_path = src_base / name
+
+        if dest_path.exists() and not overwrite:
+            skipped.append(name)
+            continue
+
+        dest_path.parent.mkdir(parents=True, exist_ok=True)
+        if dest_path.exists():
+            shutil.rmtree(dest_path)
+        shutil.copytree(src_path, dest_path)
+        installed.append(name)
+    return installed, skipped
+
+
+def _install_bundle_files(
+    names: list[str],
+    src_base: Path,
+    dest_base: Path,
+    bundle_name: str,
+    overwrite: bool,
+) -> tuple[list[str], list[str]]:
+    """Install file-based resources (commands, agents) from a bundle."""
+    installed = []
+    skipped = []
+    for name in names:
+        dest_path = dest_base / bundle_name / f"{name}.md"
+        src_path = src_base / f"{name}.md"
+
+        if dest_path.exists() and not overwrite:
+            skipped.append(name)
+            continue
+
+        dest_path.parent.mkdir(parents=True, exist_ok=True)
+        if dest_path.exists():
+            dest_path.unlink()
+        shutil.copy2(src_path, dest_path)
+        installed.append(name)
+    return installed, skipped
+
+
 def fetch_bundle(
     username: str,
     repo_name: str,
@@ -321,7 +373,6 @@ def fetch_bundle(
             tarball_url, username, repo_name, Path(tmp_dir)
         )
 
-        # Discover bundle contents
         contents = discover_bundle_contents(repo_dir, bundle_name)
 
         if contents.is_empty:
@@ -333,56 +384,32 @@ def fetch_bundle(
                 f"  - .claude/agents/{bundle_name}/*.md"
             )
 
-        # Install skills
-        skills_dest = dest_base / "skills"
-        skills_src_base = repo_dir / ".claude" / "skills" / bundle_name
-        for skill_name in contents.skills:
-            dest_path = skills_dest / bundle_name / skill_name
-            src_path = skills_src_base / skill_name
+        # Install skills (directories)
+        result.installed_skills, result.skipped_skills = _install_bundle_directory(
+            contents.skills,
+            repo_dir / ".claude" / "skills" / bundle_name,
+            dest_base / "skills",
+            bundle_name,
+            overwrite,
+        )
 
-            if dest_path.exists() and not overwrite:
-                result.skipped_skills.append(skill_name)
-                continue
+        # Install commands (files)
+        result.installed_commands, result.skipped_commands = _install_bundle_files(
+            contents.commands,
+            repo_dir / ".claude" / "commands" / bundle_name,
+            dest_base / "commands",
+            bundle_name,
+            overwrite,
+        )
 
-            dest_path.parent.mkdir(parents=True, exist_ok=True)
-            if dest_path.exists():
-                shutil.rmtree(dest_path)
-            shutil.copytree(src_path, dest_path)
-            result.installed_skills.append(skill_name)
-
-        # Install commands
-        commands_dest = dest_base / "commands"
-        commands_src_base = repo_dir / ".claude" / "commands" / bundle_name
-        for cmd_name in contents.commands:
-            dest_path = commands_dest / bundle_name / f"{cmd_name}.md"
-            src_path = commands_src_base / f"{cmd_name}.md"
-
-            if dest_path.exists() and not overwrite:
-                result.skipped_commands.append(cmd_name)
-                continue
-
-            dest_path.parent.mkdir(parents=True, exist_ok=True)
-            if dest_path.exists():
-                dest_path.unlink()
-            shutil.copy2(src_path, dest_path)
-            result.installed_commands.append(cmd_name)
-
-        # Install agents
-        agents_dest = dest_base / "agents"
-        agents_src_base = repo_dir / ".claude" / "agents" / bundle_name
-        for agent_name in contents.agents:
-            dest_path = agents_dest / bundle_name / f"{agent_name}.md"
-            src_path = agents_src_base / f"{agent_name}.md"
-
-            if dest_path.exists() and not overwrite:
-                result.skipped_agents.append(agent_name)
-                continue
-
-            dest_path.parent.mkdir(parents=True, exist_ok=True)
-            if dest_path.exists():
-                dest_path.unlink()
-            shutil.copy2(src_path, dest_path)
-            result.installed_agents.append(agent_name)
+        # Install agents (files)
+        result.installed_agents, result.skipped_agents = _install_bundle_files(
+            contents.agents,
+            repo_dir / ".claude" / "agents" / bundle_name,
+            dest_base / "agents",
+            bundle_name,
+            overwrite,
+        )
 
     return result
 
