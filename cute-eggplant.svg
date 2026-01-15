@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 280" width="200" height="280">
+  <defs>
+    <!-- Gradient for the eggplant body -->
+    <linearGradient id="eggplantGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7B2D8E;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#5C1F6A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3D1547;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Gradient for the stem/leaves -->
+    <linearGradient id="stemGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- Shine highlight -->
+    <linearGradient id="shineGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.4" />
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Main eggplant body -->
+  <ellipse cx="100" cy="170" rx="55" ry="90" fill="url(#eggplantGradient)"/>
+  
+  <!-- Body highlight/shine -->
+  <ellipse cx="75" cy="140" rx="20" ry="45" fill="url(#shineGradient)" transform="rotate(-15, 75, 140)"/>
+  
+  <!-- Stem base (calyx) -->
+  <path d="M70 85 Q65 70 55 75 Q50 80 60 90 Q70 95 75 90 Z" fill="url(#stemGradient)"/>
+  <path d="M130 85 Q135 70 145 75 Q150 80 140 90 Q130 95 125 90 Z" fill="url(#stemGradient)"/>
+  <path d="M85 75 Q80 55 70 60 Q65 70 80 82 Z" fill="url(#stemGradient)"/>
+  <path d="M115 75 Q120 55 130 60 Q135 70 120 82 Z" fill="url(#stemGradient)"/>
+  
+  <!-- Main stem -->
+  <rect x="90" y="45" width="20" height="35" rx="5" fill="url(#stemGradient)"/>
+  <ellipse cx="100" cy="45" rx="12" ry="8" fill="#2E7D32"/>
+  
+  <!-- Cute face - Eyes -->
+  <ellipse cx="80" cy="160" rx="12" ry="14" fill="#ffffff"/>
+  <ellipse cx="120" cy="160" rx="12" ry="14" fill="#ffffff"/>
+  
+  <!-- Pupils -->
+  <ellipse cx="83" cy="162" rx="6" ry="7" fill="#2D1B36"/>
+  <ellipse cx="123" cy="162" rx="6" ry="7" fill="#2D1B36"/>
+  
+  <!-- Eye sparkles -->
+  <circle cx="86" cy="158" r="3" fill="#ffffff"/>
+  <circle cx="126" cy="158" r="3" fill="#ffffff"/>
+  
+  <!-- Cute blush marks -->
+  <ellipse cx="60" cy="180" rx="10" ry="6" fill="#FF9999" opacity="0.6"/>
+  <ellipse cx="140" cy="180" rx="10" ry="6" fill="#FF9999" opacity="0.6"/>
+  
+  <!-- Happy smile -->
+  <path d="M88 195 Q100 215 112 195" stroke="#2D1B36" stroke-width="3" fill="none" stroke-linecap="round"/>
+  
+  <!-- Little tongue peeking out -->
+  <ellipse cx="100" cy="205" rx="6" ry="4" fill="#FF6B6B"/>
+</svg>

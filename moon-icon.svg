@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100">
+  <defs>
+    <!-- Moon gradient -->
+    <linearGradient id="moonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF9C4"/>
+      <stop offset="50%" style="stop-color:#FFE082"/>
+      <stop offset="100%" style="stop-color:#FFD54F"/>
+    </linearGradient>
+    
+    <!-- Soft glow effect -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Crescent moon shape -->
+  <path d="M70 15 
+           A 40 40 0 1 1 70 85 
+           A 30 30 0 1 0 70 15" 
+        fill="url(#moonGradient)" 
+        filter="url(#glow)"/>
+  
+  <!-- Cute closed happy eyes -->
+  <path d="M38 45 Q42 40 46 45" stroke="#5D4037" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  <path d="M54 42 Q58 37 62 42" stroke="#5D4037" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+  
+  <!-- Kawaii blush marks -->
+  <ellipse cx="32" cy="52" rx="5" ry="3" fill="#FFAB91" opacity="0.7"/>
+  <ellipse cx="68" cy="48" rx="5" ry="3" fill="#FFAB91" opacity="0.7"/>
+  
+  <!-- Little smile -->
+  <path d="M44 58 Q50 64 56 58" stroke="#5D4037" stroke-width="2" fill="none" stroke-linecap="round"/>
+  
+  <!-- Tiny sparkles around the moon -->
+  <circle cx="82" cy="25" r="2" fill="#FFF9C4" opacity="0.9"/>
+  <circle cx="88" cy="50" r="1.5" fill="#FFF9C4" opacity="0.7"/>
+  <circle cx="80" cy="75" r="1.8" fill="#FFF9C4" opacity="0.8"/>
+  
+  <!-- Star sparkle -->
+  <path d="M90 35 L92 40 L97 40 L93 43 L95 48 L90 45 L85 48 L87 43 L83 40 L88 40 Z" 
+        fill="#FFF9C4" opacity="0.9"/>
+</svg>
